@@ -15,14 +15,20 @@ public class requestRUEScontroller {
     public String paginaComun() throws Exception {
 		//String url = "https://www.rues.org.co/RM/";
 		String url = "https://muisca.dian.gov.co/WebRutMuisca/DefConsultaEstadoRUT.faces";
-		RequestRUES requestRUES = new RequestRUES();
+		// RequestRUES requestRUES = new RequestRUES();
 		
 		//requestRUES.obtenerCokie(url);	
 		//requestRUES.obtenerCookieCM(url);
 		//System.out.println("###########");
-		String respuesta = RequestDIAN.obtenerHtmlDIANrut("1049373081", url);
-		
-		return respuesta;
+		RequestDIAN requestDIAN = new RequestDIAN();
+		//String respuesta = RequestDIAN.obtenerHtmlDIANrut("1049373081", url);
+		//System.out.println(respuesta);
+		System.out.println("#############################obtenerHtmlDIANgpt#######################");
+		// requestDIAN.obtenerHtmlDIANgpt();
+		System.out.println("########################obtenerHtmlDIANsonic###########################");
+		requestDIAN.obtenerHtmlDIANsonic();
+		//requestDIAN.requesDIANokHttp();
+		return "Consulta realizada";
     }
 
 }
