@@ -21,14 +21,14 @@ public class requestRUEScontroller {
 		//requestRUES.obtenerCookieCM(url);
 		//System.out.println("###########");
 		RequestDIAN requestDIAN = new RequestDIAN();
-		//String respuesta = RequestDIAN.obtenerHtmlDIANrut("1049373081", url);
+		String respuesta = RequestDIAN.obtenerHtmlDIANrut("900521211", url);
 		//System.out.println(respuesta);
 		System.out.println("#############################obtenerHtmlDIANgpt#######################");
 		// requestDIAN.obtenerHtmlDIANgpt();
 		System.out.println("########################obtenerHtmlDIANsonic###########################");
 		requestDIAN.obtenerHtmlDIANsonic();
 		//requestDIAN.requesDIANokHttp();
-		return "Consulta realizada";
+		return respuesta;
     }
 
 }
