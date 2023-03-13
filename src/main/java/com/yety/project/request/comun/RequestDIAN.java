@@ -11,8 +11,19 @@ import java.nio.charset.StandardCharsets;
 
 import com.yety.project.request.comun.constants.IContsRequestDIAN;
 
+/**
+ * @author Yesid Rangel
+ *
+ */
+
 public class RequestDIAN {
 
+	/**
+	 * @param numNit
+	 * @param urldian
+	 * @return
+	 * @throws Exception
+	 */
 	public static String obtenerHtmlDIANrut(String numNit, String urldian) throws Exception {
 
 		String separadorAnd = "&";
@@ -45,6 +56,7 @@ public class RequestDIAN {
 		    outputStream.write(postData);
 		    }
 		
+		
 		int status = conexion.getResponseCode();
 		String responseDIAN;
 		if (status >= 200 && status < 300) {
@@ -66,6 +78,9 @@ public class RequestDIAN {
 		return responseDIAN;
 	}
 
+	
+	
+	
 	public void obtenerHtmlDIANgpt()  throws Exception {
 			URL url = new URL("https://muisca.dian.gov.co/WebRutMuisca/DefConsultaEstadoRUT.faces");
 			HttpURLConnection connection = (HttpURLConnection) url.openConnection();
@@ -92,6 +107,7 @@ public class RequestDIAN {
 
 
 	}
+	
 
 	public void obtenerHtmlDIANsonic() throws Exception {
 		URL url = new URL("https://muisca.dian.gov.co/WebRutMuisca/DefConsultaEstadoRUT.faces");
