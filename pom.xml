@@ -33,10 +33,17 @@
 			<artifactId>jsoup</artifactId>
 			<version>1.15.4</version>
 		</dependency>
+		<!-- devtools -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
-			</dependency>
+		</dependency>
+		<!-- projectlombok -->
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<scope>provided</scope>
+		</dependency>
 	</dependencies>
 	<build>
 		<plugins>

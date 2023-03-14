@@ -9,17 +9,17 @@ public interface IContsRequestDIAN {
 
 	
 	/*
-	 * Contante para el parametro vistaConsultaEstadoRUT:formConsultaEstadoRUT:btnBuscar.x
+	 * Constante para el parametro vistaConsultaEstadoRUT:formConsultaEstadoRUT:btnBuscar.x
 	 */
 	String PARAMETER_BTN_BUSCAR_X = "0";
 
 	/*
-	 * Contante para el parametro vistaConsultaEstadoRUT:formConsultaEstadoRUT:btnBuscar.y
+	 * Constante para el parametro vistaConsultaEstadoRUT:formConsultaEstadoRUT:btnBuscar.y
 	 */
 	String PARAMETER_BTN_BUSCAR_Y = "0";
 
 	/*
-	 * Contante para el parametro com.sun.faces.VIEW
+	 * Constante para el parametro com.sun.faces.VIEW
 	 */
 	String COM_SUN_FACES_VIEW = "H4sIAAAAAAAAAO1cS2wcyXmuGZISyZW1u5ZXsbPLbGvlFXdhcTgc6sH3LkVKJhM+ZIpSEhvObM10DdlyT1dvdfVwqN011j4khxwcIDHgBOs8gFwS"
 			+ "2Jc4LyAGjEBAAgRwgDjIJUASI5cgiB9xLnlckv+vfkz3TM+QPWpmrYX60Ozp7vqr/u9/1t9V/Nr3yZAjyBwXewV6nzav3HdqBWrbplGl0uBWYRlu3pFUsk1q0T0mPr4rGL"
@@ -66,9 +66,25 @@ public interface IContsRequestDIAN {
 	
 	
 	/*
-	 * Contante para el parametro com.sun.faces.VIEW
+	 * Constante para el parametro com.sun.faces.VIEW
 	 */
 	String FORM_COMSULTA_ESTADO_RUT = "vistaConsultaEstadoRUT:formConsultaEstadoRUT";
 	
+	/**
+	 *  Constante para ubicar el campo que contiene la razon cuando el html pertenece a una empresa juridaca
+	 */
+	String HTML_ID_JURIDICA_TAG = "#vistaConsultaEstadoRUT\\:formConsultaEstadoRUT\\:razonSocial";
+	
+	
+	/**
+	 * Constantes para ubicar el campo que contiene los detalles del nombre de una persona natural
+	 */
+	String HTML_ID_PRIMER_APELLIDO_TAG = "#vistaConsultaEstadoRUT\\:formConsultaEstadoRUT\\:primerApellido";
+	
+	String HTML_ID_OTRO_APELLIDO_TAG = "#vistaConsultaEstadoRUT\\:formConsultaEstadoRUT\\:segundoApellido";
+	
+	String HTML_ID_PRIMER_NOMBRE_TAG = "#vistaConsultaEstadoRUT\\:formConsultaEstadoRUT\\:primerNombre";
+	
+	String HTML_ID_OTRO_NOMBRE_TAG = "#vistaConsultaEstadoRUT\\:formConsultaEstadoRUT\\:otrosNombres";
 
 }
