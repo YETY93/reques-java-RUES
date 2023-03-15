@@ -3,11 +3,15 @@ package com.yety.project.request.comun.dto;
 import java.io.Serializable;
 
 import lombok.AccessLevel;
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
-@Data
+/**
+ * @author Yesid R
+ *
+ */
+@Getter
+@Setter
 public class DataTerceroDianDto implements Serializable {
 
 	/**
@@ -26,5 +30,7 @@ public class DataTerceroDianDto implements Serializable {
 	private String otrosApellido;
 	
 	private String razonSocial;
+	
+	private Boolean esJuridica;
 	
 }

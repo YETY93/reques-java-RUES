@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.yety.project.request.comun.OperationsHTML;
 import com.yety.project.request.comun.RequestDIAN;
-import com.yety.project.request.comun.RequestRUES;
+import com.yety.project.request.comun.dto.DataTerceroDianDto;
 
 
 
@@ -29,15 +29,16 @@ public class requestRUEScontroller {
 	 * @throws Exception
 	 */
 	@GetMapping("nit/{numberIdent}")
-    public String searchData(@PathVariable String numberIdent ) throws Exception {
+    public DataTerceroDianDto searchData(@PathVariable String numberIdent ) throws Exception {
 		System.out.println(numberIdent);
 		String url = "https://muisca.dian.gov.co/WebRutMuisca/DefConsultaEstadoRUT.faces";
 		String respuesta = RequestDIAN.obtenerHtmlDIANrut(numberIdent , url);
 		OperationsHTML opHTML = new OperationsHTML();
 		
-		String persona = opHTML.searchDataThirdCustomer(respuesta);
-		
-		return persona;
+		DataTerceroDianDto dataTerceroDianDto = opHTML.searchDataThirdCustomer(respuesta);
+		// Return DTO
+		// return Response.ok(dto, MediaType.APPLICATION_JSON).build();
+		return dataTerceroDianDto;
     }
 
 }

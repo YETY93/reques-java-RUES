@@ -8,6 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.yety.project.request.comun.constants.IContsRequestDIAN;
 import com.yety.project.request.comun.dto.DataTerceroDianDto;
+import com.yety.project.request.comun.mapper.DatosADataTerceroDianDto;
+
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * @author Yesid Rangel
@@ -15,8 +19,9 @@ import com.yety.project.request.comun.dto.DataTerceroDianDto;
  */
 public class OperationsHTML {
 	
-		
-	    DataTerceroDianDto dataTerceroDianDto = new DataTerceroDianDto();
+
+	    DataTerceroDianDto dataTerceroDianDto;
+	    
 	
 	/**
 	 * @param paginaHTML
@@ -55,16 +60,17 @@ public class OperationsHTML {
 	 * @return 
 	 * @throws Exception 
 	 */
-	public String searchDataThirdCustomer(String paginaHTML) throws Exception {
+	public DataTerceroDianDto searchDataThirdCustomer(String paginaHTML) throws Exception {
 		
 		Document document = this.parserToHTML(paginaHTML);
 		Boolean juridica = this.isJuridica(document, paginaHTML);
-		String thirdCustomer = null;
 		
 		if (juridica) {
 			Element element = document.select(IContsRequestDIAN.HTML_ID_JURIDICA_TAG).first();
-			thirdCustomer = element.text();
+			String thirdCustomer = element.text();
 			System.out.println(thirdCustomer);
+			dataTerceroDianDto = DatosADataTerceroDianDto.crearTerceroJuridica(thirdCustomer);
+			
 			
 		}else {
 			Element elementName = document.select(IContsRequestDIAN.HTML_ID_PRIMER_NOMBRE_TAG).first();
@@ -76,13 +82,15 @@ public class OperationsHTML {
 			String otherName = elementOtherName.text();
 			String lastName = elementLastname.text();
 			String otherLastName= elementOtherLastname.text();
-			thirdCustomer =  name + " " + otherName + " " + lastName + " " + otherLastName;
-
+			System.out.println(name);
+			
+			dataTerceroDianDto = DatosADataTerceroDianDto.crearTerceroNatural(name, otherName, lastName, otherLastName);
+			//System.out.println(dataTerceroDianDto.getN());
 			
 		}
 		
 		
-		return thirdCustomer;
+		return dataTerceroDianDto;
 	}
 	
 	
