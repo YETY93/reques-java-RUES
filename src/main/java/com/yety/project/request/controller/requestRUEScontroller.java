@@ -30,8 +30,8 @@ public class requestRUEScontroller {
 	 */
 	@GetMapping("nit/{numberIdent}")
     public DataTerceroDianDto searchData(@PathVariable String numberIdent ) throws Exception {
-		System.out.println(numberIdent);
 		String url = "https://muisca.dian.gov.co/WebRutMuisca/DefConsultaEstadoRUT.faces";
+		
 		String respuesta = RequestDIAN.obtenerHtmlDIANrut(numberIdent , url);
 		OperationsHTML opHTML = new OperationsHTML();
 		

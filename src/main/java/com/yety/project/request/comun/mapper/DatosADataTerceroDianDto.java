@@ -7,7 +7,7 @@ import com.yety.project.request.comun.dto.DataTerceroDianDto;
  *
  */
 public abstract class DatosADataTerceroDianDto {
-	
+
 	/**
 	 * @param primerNombre
 	 * @param otroNombre
@@ -16,41 +16,54 @@ public abstract class DatosADataTerceroDianDto {
 	 * @return
 	 */
 	public static DataTerceroDianDto crearTerceroNatural(String primerNombre, String otroNombre, String primerApellido,
-													String otroApellido) {
-		
+			String otroApellido) {
+
 		DataTerceroDianDto dataTerceroDianDto = new DataTerceroDianDto();
-		
+
 		dataTerceroDianDto.setPrimerNombre(primerNombre);
 		dataTerceroDianDto.setOtrosNombres(otroNombre);
 		dataTerceroDianDto.setPrimerApellido(primerApellido);
 		dataTerceroDianDto.setOtrosApellido(otroApellido);
 		dataTerceroDianDto.setRazonSocial("");
 		dataTerceroDianDto.setEsJuridica(false);
-		
+
 		return dataTerceroDianDto;
-		
+
 	}
-	
+
 	/**
 	 * @param nombreRazonSocial
 	 * @return
 	 */
 	public static DataTerceroDianDto crearTerceroJuridica(String nombreRazonSocial) {
-		
+
 		DataTerceroDianDto dataTerceroDianDto = new DataTerceroDianDto();
 		/*
+		 * dataTerceroDianDto.setPrimerNombre("");
+		 * dataTerceroDianDto.setOtrosNombres("");
+		 * dataTerceroDianDto.setPrimerApellido("");
+		 * dataTerceroDianDto.setOtrosApellido("");
+		 */
+		dataTerceroDianDto.setRazonSocial(nombreRazonSocial);
+		dataTerceroDianDto.setEsJuridica(true);
+
+		return dataTerceroDianDto;
+
+	}
+
+	public static DataTerceroDianDto terceroNaturalNoEncontrado() {
+
+		DataTerceroDianDto dataTerceroDianDto = new DataTerceroDianDto();
+
 		dataTerceroDianDto.setPrimerNombre("");
 		dataTerceroDianDto.setOtrosNombres("");
 		dataTerceroDianDto.setPrimerApellido("");
 		dataTerceroDianDto.setOtrosApellido("");
-		*/
-		dataTerceroDianDto.setRazonSocial(nombreRazonSocial);
-		dataTerceroDianDto.setEsJuridica(true);
-		
+		dataTerceroDianDto.setRazonSocial("");
+		dataTerceroDianDto.setEsJuridica(false);
+
 		return dataTerceroDianDto;
-		
+
 	}
-	
-	
-	
+
 }

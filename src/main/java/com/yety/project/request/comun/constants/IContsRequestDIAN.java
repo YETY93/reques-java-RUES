@@ -3,23 +3,89 @@ package com.yety.project.request.comun.constants;
 public interface IContsRequestDIAN {
 
 	/*
+	 * Url de peteción DIAN
+	 */
+	String URL_DIAN = "https://muisca.dian.gov.co/WebRutMuisca/DefConsultaEstadoRUT.faces";
+	
+	/*
 	 * Constante para el tipo de contenido de la petición
 	 */
 	String CONTENT_TYPE_FORM_URLENCODE = "application/x-www-form-urlencoded";
 
 	
 	/*
-	 * Constante para el parametro vistaConsultaEstadoRUT:formConsultaEstadoRUT:btnBuscar.x
+	 * PARAMETROS PARA FORM x-www-form-urlencoded
+	 * 
 	 */
-	String PARAMETER_BTN_BUSCAR_X = "0";
+	
+	/*
+	 * Constante CLAVE para el parametro VistaConsultaEstadoRUT:formConsultaEstadoRUT:numNit
+	 * 
+	 * el valor se concatena de una nueva petición dinamica a la DIAN
+	 */
+	String KEY_FORM_CONSULTA_ESTADO_RUT_NUM_NIT = "vistaConsultaEstadoRUT:formConsultaEstadoRUT:numNit";
+	
+	/*
+	 * Constante CLAVE para el parametro vistaConsultaEstadoRUT:formConsultaEstadoRUT:btnBuscar.x
+	 */
+	String KEY_BTN_BUSCAR_X = "vistaConsultaEstadoRUT:formConsultaEstadoRUT:btnBuscar.x";
+	
+	/*
+	 * Constante VALOR para el parametro vistaConsultaEstadoRUT:formConsultaEstadoRUT:btnBuscar.x
+	 */
+	String VALUE_BTN_BUSCAR_X = "0";
+	
+	/*
+	 * Constante key para el parametro vistaConsultaEstadoRUT:formConsultaEstadoRUT:btnBuscar.y
+	 */
+	String KEY_BTN_BUSCAR_Y = "vistaConsultaEstadoRUT:formConsultaEstadoRUT:btnBuscar.y";
 
 	/*
-	 * Constante para el parametro vistaConsultaEstadoRUT:formConsultaEstadoRUT:btnBuscar.y
+	 * Constante VALOR el parametro vistaConsultaEstadoRUT:formConsultaEstadoRUT:btnBuscar.y
 	 */
-	String PARAMETER_BTN_BUSCAR_Y = "0";
-
+	String VALUE_BTN_BUSCAR_Y = "0";
+	
 	/*
 	 * Constante para el parametro com.sun.faces.VIEW
+	 * la clave para la construcción se llenara dinamicamente
+	 */
+	String KEY_COM_SUN_FACES_VIEW = "com.sun.faces.VIEW";
+	
+	/*
+	 * Constante CLve para el parametro KEY_COMSULTA_ESTADO_RUT
+	 */
+	String KEY_CONSULTA_ESTADO_RUT = "vistaConsultaEstadoRUT:formConsultaEstadoRUT";
+	
+	/*
+	 * Constante VALOR para el parametro vistaConsultaEstadoRUT:formConsultaEstadoRUT
+	 */
+	String VALUE_CONSULTA_ESTADO_RUT = "vistaConsultaEstadoRUT:formConsultaEstadoRUT";
+	
+	
+	// Constantes para etiquetas del html
+	
+	/**
+	 *  Constante para ubicar el campo que contiene la razon cuando el html pertenece a una empresa juridaca
+	 */
+	String HTML_ID_JURIDICA_TAG = "#vistaConsultaEstadoRUT\\:formConsultaEstadoRUT\\:razonSocial";
+	
+	
+	/**
+	 * Constantes para ubicar el campo que contiene los detalles del nombre de una persona natural
+	 */
+	String HTML_ID_PRIMER_APELLIDO_TAG = "#vistaConsultaEstadoRUT\\:formConsultaEstadoRUT\\:primerApellido";
+	
+	String HTML_ID_OTRO_APELLIDO_TAG = "#vistaConsultaEstadoRUT\\:formConsultaEstadoRUT\\:segundoApellido";
+	
+	String HTML_ID_PRIMER_NOMBRE_TAG = "#vistaConsultaEstadoRUT\\:formConsultaEstadoRUT\\:primerNombre";
+	
+	String HTML_ID_OTRO_NOMBRE_TAG = "#vistaConsultaEstadoRUT\\:formConsultaEstadoRUT\\:otrosNombres";
+	
+	
+	
+	// ToDo Pendiente borrar
+	/*
+	 * Constante para el parametro com.sun.faces.VIEW 
 	 */
 	String COM_SUN_FACES_VIEW = "H4sIAAAAAAAAAO1cS2wcyXmuGZISyZW1u5ZXsbPLbGvlFXdhcTgc6sH3LkVKJhM+ZIpSEhvObM10DdlyT1dvdfVwqN011j4khxwcIDHgBOs8gFwS"
 			+ "2Jc4LyAGjEBAAgRwgDjIJUASI5cgiB9xLnlckv+vfkz3TM+QPWpmrYX60Ozp7vqr/u9/1t9V/Nr3yZAjyBwXewV6nzav3HdqBWrbplGl0uBWYRlu3pFUsk1q0T0mPr4rGL"
@@ -65,26 +131,5 @@ public interface IContsRequestDIAN {
 			+ "a59BJtvKJi28d9VbBp/1OG6QJB+4jYTUZK5ZkEvFe6LH3V63wvJgQ224lbnxO2vcM9zr2++NNTMC6BUf7/wA05T5PFVYAAA==";
 	
 	
-	/*
-	 * Constante para el parametro com.sun.faces.VIEW
-	 */
-	String FORM_COMSULTA_ESTADO_RUT = "vistaConsultaEstadoRUT:formConsultaEstadoRUT";
-	
-	/**
-	 *  Constante para ubicar el campo que contiene la razon cuando el html pertenece a una empresa juridaca
-	 */
-	String HTML_ID_JURIDICA_TAG = "#vistaConsultaEstadoRUT\\:formConsultaEstadoRUT\\:razonSocial";
-	
-	
-	/**
-	 * Constantes para ubicar el campo que contiene los detalles del nombre de una persona natural
-	 */
-	String HTML_ID_PRIMER_APELLIDO_TAG = "#vistaConsultaEstadoRUT\\:formConsultaEstadoRUT\\:primerApellido";
-	
-	String HTML_ID_OTRO_APELLIDO_TAG = "#vistaConsultaEstadoRUT\\:formConsultaEstadoRUT\\:segundoApellido";
-	
-	String HTML_ID_PRIMER_NOMBRE_TAG = "#vistaConsultaEstadoRUT\\:formConsultaEstadoRUT\\:primerNombre";
-	
-	String HTML_ID_OTRO_NOMBRE_TAG = "#vistaConsultaEstadoRUT\\:formConsultaEstadoRUT\\:otrosNombres";
 
 }

@@ -17,11 +17,7 @@ import lombok.Setter;
  * @author Yesid Rangel
  *
  */
-public class OperationsHTML {
-	
-
-	    DataTerceroDianDto dataTerceroDianDto;
-	    
+public class OperationsHTML {	    
 	
 	/**
 	 * @param paginaHTML
@@ -35,7 +31,7 @@ public class OperationsHTML {
 	}
 	
 	/**
-	 * @param paginaHTML
+	 * @param paginaHTML 
 	 * @return
 	 */
 	public Boolean isJuridica(Document paginaHTML, String tagSearch) throws Exception {
@@ -61,34 +57,42 @@ public class OperationsHTML {
 	 * @throws Exception 
 	 */
 	public DataTerceroDianDto searchDataThirdCustomer(String paginaHTML) throws Exception {
-		
+		DataTerceroDianDto dataTerceroDianDto;
 		Document document = this.parserToHTML(paginaHTML);
 		Boolean juridica = this.isJuridica(document, paginaHTML);
 		
 		if (juridica) {
 			Element element = document.select(IContsRequestDIAN.HTML_ID_JURIDICA_TAG).first();
 			String thirdCustomer = element.text();
-			System.out.println(thirdCustomer);
 			dataTerceroDianDto = DatosADataTerceroDianDto.crearTerceroJuridica(thirdCustomer);
 			
-			
 		}else {
-			Element elementName = document.select(IContsRequestDIAN.HTML_ID_PRIMER_NOMBRE_TAG).first();
-			Element elementOtherName = document.select(IContsRequestDIAN.HTML_ID_OTRO_NOMBRE_TAG).first();
-			Element elementLastname = document.select(IContsRequestDIAN.HTML_ID_PRIMER_APELLIDO_TAG).first();
-			Element elementOtherLastname= document.select(IContsRequestDIAN.HTML_ID_OTRO_APELLIDO_TAG).first();
-			
-			String name = elementName.text();
-			String otherName = elementOtherName.text();
-			String lastName = elementLastname.text();
-			String otherLastName= elementOtherLastname.text();
-			System.out.println(name);
-			
-			dataTerceroDianDto = DatosADataTerceroDianDto.crearTerceroNatural(name, otherName, lastName, otherLastName);
-			//System.out.println(dataTerceroDianDto.getN());
+			String name;
+			String otherName;
+			String lastName;
+			String otherLastName;
+
+			try {
+				Element elementName = document.select(IContsRequestDIAN.HTML_ID_PRIMER_NOMBRE_TAG).first();
+				Element elementOtherName = document.select(IContsRequestDIAN.HTML_ID_OTRO_NOMBRE_TAG).first();
+				Element elementLastname = document.select(IContsRequestDIAN.HTML_ID_PRIMER_APELLIDO_TAG).first();
+				Element elementOtherLastname= document.select(IContsRequestDIAN.HTML_ID_OTRO_APELLIDO_TAG).first();
+				
+				name = elementName.text();
+				otherName = elementOtherName.text();
+				lastName = elementLastname.text();
+				otherLastName= elementOtherLastname.text();
+				
+				
+				dataTerceroDianDto = DatosADataTerceroDianDto.crearTerceroNatural(name, otherName, lastName, otherLastName);
+				
+			} catch (Exception e) {
+				
+				dataTerceroDianDto = DatosADataTerceroDianDto.terceroNaturalNoEncontrado();
+				
+			}			
 			
 		}
-		
 		
 		return dataTerceroDianDto;
 	}
