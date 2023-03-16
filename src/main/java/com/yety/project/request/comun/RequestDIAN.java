@@ -24,49 +24,56 @@ import com.yety.project.request.comun.constants.IContsRequestDIAN;
 
 public class RequestDIAN {
 
+
 	/**
+	 * Esta funcion ejecuta la petición post a la url y retorna el html obtenido a¡en formato string
+	 * 
 	 * @param numNit
-	 * @param urldian
-	 * @return
+	 * @return responseDIAN (String)
 	 * @throws Exception
 	 */
-	public static String obtenerHtmlDIANrut(String numNit, String urldian) throws Exception {
+	public static String obtenerHtmlDIANrut(String numNit) throws Exception {
 		
 		String parametrosCompletos = construirParametrosWwwForm(numNit);
-		URL url = new URL(urldian);
-		HttpURLConnection conexion = (HttpURLConnection) url.openConnection();
-		
-		conexion.setRequestMethod("POST");
-		conexion.setRequestProperty("Content-Type", IContsRequestDIAN.CONTENT_TYPE_FORM_URLENCODE);
-		conexion.setDoOutput(true);
-
-		byte[] postData = parametrosCompletos.getBytes(StandardCharsets.UTF_8);
-		int postDataLength = postData.length;
-		conexion.setRequestProperty("Content-Length", Integer.toString(postDataLength));
-
-		try (OutputStream outputStream = conexion.getOutputStream()) {
-			outputStream.write(postData);
-		}
-
-		int status = conexion.getResponseCode();
-		System.out.println("status : ");
-		System.out.println(status);
 		String responseDIAN;
-		if (status >= 200 && status < 300) {
-			BufferedReader in = new BufferedReader(new InputStreamReader(conexion.getInputStream()));
-			String inputLine;
-			StringBuffer content = new StringBuffer();
-			while ((inputLine = in.readLine()) != null) {
-				content.append(inputLine);
-			}
-			in.close();
-			responseDIAN = content.toString();
-		} else {
-			System.out.println("Unexpected status " + status);
+		if (parametrosCompletos == null ||  parametrosCompletos.isEmpty() ) {
+			
 			responseDIAN = null;
 		}
+		else {
+			
+			URL url = new URL(IContsRequestDIAN.URL_DIAN);
+			HttpURLConnection conexion = (HttpURLConnection) url.openConnection();
+			
+			conexion.setRequestMethod("POST");
+			conexion.setRequestProperty("Content-Type", IContsRequestDIAN.CONTENT_TYPE_FORM_URLENCODE);
+			conexion.setDoOutput(true);
+			
+			// convierte los datos recibidos del  string parametrosCompletos a bytes 
+			// para enviarlos por parametros
+			byte[] postData = parametrosCompletos.getBytes(StandardCharsets.UTF_8);
+			int postDataLength = postData.length;
+			conexion.setRequestProperty("Content-Length", Integer.toString(postDataLength));
+			OutputStream outputStream = conexion.getOutputStream();
+			outputStream.write(postData); // envia la informacion de la peteción
 
-		conexion.disconnect();
+			// Valida si existe rspuesta por parte de la url a consultar
+			int status = conexion.getResponseCode();
+			if (status == 200) {
+				BufferedReader bfR = new BufferedReader(new InputStreamReader(conexion.getInputStream()));
+				String inputLine;
+				StringBuffer content = new StringBuffer();
+				while ((inputLine = bfR.readLine()) != null) {
+					content.append(inputLine);
+				}
+				bfR.close();
+				responseDIAN = content.toString();
+			} else {
+				responseDIAN = null;
+			}
+			
+			conexion.disconnect(); // cierra la conxion con la url
+		}
 
 		return responseDIAN;
 	}

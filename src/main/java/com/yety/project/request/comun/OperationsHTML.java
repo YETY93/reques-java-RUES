@@ -1,5 +1,7 @@
 package com.yety.project.request.comun;
 
+import java.util.Objects;
+
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -57,6 +59,10 @@ public class OperationsHTML {
 	 * @throws Exception 
 	 */
 	public DataTerceroDianDto searchDataThirdCustomer(String paginaHTML) throws Exception {
+		if (Objects.isNull(paginaHTML)) {
+			return DatosADataTerceroDianDto.terceroNaturalNoEncontrado();
+		}
+		
 		DataTerceroDianDto dataTerceroDianDto;
 		Document document = this.parserToHTML(paginaHTML);
 		Boolean juridica = this.isJuridica(document, paginaHTML);
@@ -83,7 +89,6 @@ public class OperationsHTML {
 				lastName = elementLastname.text();
 				otherLastName= elementOtherLastname.text();
 				
-				
 				dataTerceroDianDto = DatosADataTerceroDianDto.crearTerceroNatural(name, otherName, lastName, otherLastName);
 				
 			} catch (Exception e) {
@@ -91,7 +96,6 @@ public class OperationsHTML {
 				dataTerceroDianDto = DatosADataTerceroDianDto.terceroNaturalNoEncontrado();
 				
 			}			
-			
 		}
 		
 		return dataTerceroDianDto;
